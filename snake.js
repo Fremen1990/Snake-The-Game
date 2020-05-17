@@ -5,6 +5,8 @@ const ctx = cvs.getContext("2d");
 
 const box = 32;
 
+let level = 150;
+
 // load images
 
 const ground = new Image();
@@ -153,7 +155,23 @@ function draw() {
   ctx.fillStyle = "white";
   ctx.font = "45px Changa one";
   ctx.fillText(score, 2 * box, 1.6 * box);
+
+  ctx.fillStyle = "white";
+  ctx.font = "45px Changa one";
+  ctx.fillText(
+    `level ${level == 150 ? "easy" : "medium"}`,
+    11 * box,
+    1.6 * box
+  );
+
+  if (score > 5) {
+    level = 125;
+  } else if (score > 10) {
+    level = 150;
+  } else if (score > 20) {
+    level = 165;
+  }
 }
 
 // call draw function every 100ms by setInterval
-let game = setInterval(draw, 100);
+let game = setInterval(draw, level);

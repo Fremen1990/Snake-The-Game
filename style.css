@@ -8,26 +8,48 @@
 
 body {
   background: rgb(59, 153, 59);
+  /* display: flex; */
+  align-items: center;
 }
-
+header {
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+}
 h1 {
-  text-align: center;
-  margin-top: 60px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
   font-family: "VT323", monospace;
-  font-size: 60px;
+  font-size: 80px;
 }
 
-canvas {
-  display: block;
+.container {
   margin: auto auto;
-  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  max-width: 1200px;
+}
+aside,
+img {
+  display: flex;
+  max-width: 300px;
+  max-height: 400px;
+  justify-content: space-between;
+  flex-shrink: 1;
+}
+canvas {
+  display: flex;
+  /* margin: auto auto; */
+  /* margin-top: 50px; */
   height: 70vh;
 }
 
-/* @media (min-width: 300px) and (max-width: 420px) {
-  html {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+@media (min-width: 300px) and (max-width: 420px) {
+  body {
+    display: flex;
+    flex-direction: column;
   }
-} */
+}
