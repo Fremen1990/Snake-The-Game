@@ -79,6 +79,7 @@ detectSwipe("swipeme", (el, dir) => {
     down.play();
     d = "DOWN";
   }
+  gameStarted();
 });
 
 // source code
@@ -234,6 +235,8 @@ function draw() {
     clearInterval(game);
     dead.play();
     ctx.drawImage(gameOverImg, gameOver.x, gameOver.y);
+
+    setTimeout(startAgain, 1000);
   }
 
   snake.unshift(newHead);
@@ -261,3 +264,21 @@ function draw() {
 
 // call draw function every 100ms by setInterval
 let game = setInterval(draw, level);
+
+//changing first sweep screen
+const gameStarted = () => {
+  const swipeToStart = document.querySelector(".swipeToStart");
+  swipeToStart.style.display = "none";
+};
+
+const startAgain = () => {
+  const playAgain = document.querySelector(".playAgain");
+  const swipemeOff = document.querySelector(".swipeme");
+  playAgain.style.display = "block";
+  swipemeOff.style.display = "none";
+  playAgain.addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    console.log("touched");
+    window.location.reload();
+  });
+};

@@ -2,21 +2,25 @@
   <head>
     <title>Snake The Game</title>
 
-    <meta name="viewport" />
+    <!-- <meta name="viewport" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,  minimum-scale=1.0">  
+  
   </head>
   <link rel="stylesheet" href="style.css" />
-  <body>
+  <link rel="manifest" href="manifest.json">
+  <body id="container">
    
     <header>
       <h1>SNAKE THE GAME</h1>
     </header>
     <div class="container">
-      <h2>Swipe to start the game!</h2>
+      <h3 class="playAgain">Play Again!</h3>
+      <h2 class="swipeToStart">Swipe to start the game!</h2>
       <aside class="left"><img src="img/snake2.png" alt="" /></aside>
       <canvas id="snake" width="608" height="608"></canvas>
       <aside class="right"><img src="img/snake.png" alt="" /></aside>
     </div>
-    <div id="swipeme"></div> </div>
+    <div id="swipeme" class="swipeme"></div> </div>
     <script src="snake.js"></script>
   </body>
 </html>
