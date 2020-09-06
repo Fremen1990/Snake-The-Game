@@ -58,6 +58,92 @@ const gameOver = {
 
 let score = 0;
 
+// DETECT SWIPE FOR MOBILE!!.................................................
+
+/// usage
+
+detectSwipe("swipeme", (el, dir) => {
+  // alert(`you swiped on element with id ${el.id} to ${dir} direction`)
+  // console.log(dir);
+  let key = dir;
+  if (key == "left" && d != "RIGHT") {
+    left.play();
+    d = "LEFT";
+  } else if (key == "up" && d != "DOWN") {
+    up.play();
+    d = "UP";
+  } else if (key == "right" && d != "LEFT") {
+    right.play();
+    d = "RIGHT";
+  } else if (key == "down" && d != "UP") {
+    down.play();
+    d = "DOWN";
+  }
+});
+
+// source code
+
+// Tune deltaMin according to your needs. Near 0 it will almost
+// always trigger, with a big value it can never trigger.
+function detectSwipe(id, func, deltaMin = 90) {
+  const swipe_det = {
+    sX: 0,
+    sY: 0,
+    eX: 0,
+    eY: 0,
+  };
+  // Directions enumeration
+  const directions = Object.freeze({
+    UP: "down",
+    DOWN: "up",
+    RIGHT: "right",
+    LEFT: "left",
+  });
+  let direction = null;
+  const el = document.getElementById(id);
+  el.addEventListener(
+    "touchstart",
+    function (e) {
+      const t = e.touches[0];
+      swipe_det.sX = t.screenX;
+      swipe_det.sY = t.screenY;
+    },
+    false
+  );
+  el.addEventListener(
+    "touchmove",
+    function (e) {
+      // Prevent default will stop user from scrolling, use with care
+      e.preventDefault();
+      const t = e.touches[0];
+      swipe_det.eX = t.screenX;
+      swipe_det.eY = t.screenY;
+    },
+    false
+  );
+  el.addEventListener(
+    "touchend",
+    function (e) {
+      const deltaX = swipe_det.eX - swipe_det.sX;
+      const deltaY = swipe_det.eY - swipe_det.sY;
+      // Min swipe distance, you could use absolute value rather
+      // than square. It just felt better for personnal use
+      if (deltaX ** 2 + deltaY ** 2 < deltaMin ** 2) return;
+      // horizontal
+      if (deltaY === 0 || Math.abs(deltaX / deltaY) > 1)
+        direction = deltaX > 0 ? directions.RIGHT : directions.LEFT;
+      // vertical
+      else direction = deltaY > 0 ? directions.UP : directions.DOWN;
+
+      if (direction && typeof func === "function") func(el, direction);
+
+      direction = null;
+    },
+    false
+  );
+}
+// END OF DETECT SWIPE FOR MOBILE.....................
+
 // control the snake
 
 let d;
