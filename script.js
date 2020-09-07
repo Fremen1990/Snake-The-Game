@@ -1,22 +1,28 @@
-const body = document.querySelector("body");
+const body = document.querySelector("#container");
+
+const landscapeBtn = document.querySelector(".landscape");
 
 // upon lock to landscape-primary mode
-function fullScreen() {
-  if (document.documentElement.requestFullscreen)
-    document.querySelector("#container").requestFullscreen();
-  else if (document.documentElement.webkitRequestFullScreen)
-    document.querySelector("#container").webkitRequestFullScreen();
+// const fullScreen = () => {
+// when screen orientation changes
+//   screen.orientation
+//     .addEventListener("change", function () {
+//       _STATUS.innerHTML = screen.orientation.type + " mode";
+//     })
+//     .catch(function (error) {
+//       alert(error);
+//     });
+// };
 
-  screen.orientation.lock("landscape-primary");
+// window.addEventListener("load", fullScreen());
+landscapeBtn.addEventListener("click", () => {
+  console.log("srgws");
 
-  // when screen orientation changes
-  screen.orientation
-    .addEventListener("change", function () {
-      _STATUS.innerHTML = screen.orientation.type + " mode";
-    })
-    .catch(function (error) {
-      alert(error);
-    });
-}
-
-window.addEventListener("load", fullScreen());
+  document.documentElement.requestFullscreen;
+  body.requestFullscreen();
+  if (document.documentElement.requestFullscreen) {
+    body.requestFullscreen();
+  } else if (document.documentElement.webkitRequestFullScreen) {
+    body.webkitRequestFullScreen();
+  }
+});

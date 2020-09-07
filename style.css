@@ -19,12 +19,21 @@ header {
 h1 {
   margin-top: 2%;
   margin-bottom: 1%;
-
   width: 100vw;
   display: flex;
   justify-content: center;
   font-family: "VT323", monospace;
   font-size: 6em;
+}
+
+.landscape {
+  margin-top: 2%;
+  margin-bottom: 1%;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  font-family: "VT323", monospace;
+  font-size: 2em;
 }
 
 h2,
@@ -103,7 +112,13 @@ canvas {
     /* animation-iteration-count: infinite; */
     animation-duration: 2s;
   }
-
+  .landscape {
+    display: block;
+    position: fixed;
+    height: 100px;
+    width: 200px;
+    z-index: 99;
+  }
   .container {
     display: none;
   }

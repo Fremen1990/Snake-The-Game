@@ -279,6 +279,6 @@ const startAgain = () => {
   playAgain.addEventListener("touchstart", (e) => {
     e.preventDefault();
     console.log("touched");
-    window.location.reload();
+    // window.location.reload();
   });
 };
