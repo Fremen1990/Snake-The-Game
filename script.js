@@ -25,4 +25,5 @@ landscapeBtn.addEventListener("click", () => {
   } else if (document.documentElement.webkitRequestFullScreen) {
     body.webkitRequestFullScreen();
   }
+  landscapeBtn.style.display = "none";
 });

@@ -277,8 +277,26 @@ const startAgain = () => {
   playAgain.style.display = "block";
   swipemeOff.style.display = "none";
   playAgain.addEventListener("touchstart", (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     console.log("touched");
-    // window.location.reload();
+
+    window.location.reload();
+    console.log(landscapeBtn);
+    const landscapeBtn = document.querySelector(".landscape");
+    landscapeBtn.style.display = "none";
+    playAgain.style.display = "block";
   });
 };
+
+const playAgain = document.querySelector(".playAgain");
+playAgain.addEventListener("touchstart", () => {
+  const body = document.querySelector("#container");
+  document.documentElement.requestFullscreen;
+  body.requestFullscreen();
+  if (document.documentElement.requestFullscreen) {
+    body.requestFullscreen();
+  } else if (document.documentElement.webkitRequestFullScreen) {
+    body.webkitRequestFullScreen();
+  }
+  playAgain.style.display = "none";
+});
